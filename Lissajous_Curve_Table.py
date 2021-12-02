@@ -5,7 +5,7 @@ import pygame, math
 pygame.init()
 WIDTH, HEIGHT = 600, 600
 root = pygame.display.set_mode((WIDTH, HEIGHT))
-TITLE = "SCREEN TITLE HERE"
+TITLE = "Lissajous Curve Table"
 pygame.display.set_caption(TITLE)
 FPS = 30
 
