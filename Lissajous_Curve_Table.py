@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 600, 600
 root = pygame.display.set_mode((WIDTH, HEIGHT))
 TITLE = "Lissajous Curve Table"
 pygame.display.set_caption(TITLE)
-FPS = 30
+FPS = 60
 
 # COLORS
 WHITE = (255, 255, 255)
@@ -73,12 +73,11 @@ def draw():
 
     root.fill(BLACK)
 
-    for point in cols:
+    for index, point in enumerate(cols):
         point.draw(True)
+        rows[index].draw(True)
         point.update()
-    for point in rows:
-        point.draw(True)
-        point.update()
+        rows[index].update()
 
     for i in trace:
         pygame.draw.circle(
@@ -88,11 +87,6 @@ def draw():
             1,
         )
 
-    print(len(trace))
-
-    if len(trace) >= 22000:
-        trace = []
-
     for i in cols:
         for j in rows:
             pygame.draw.circle(
@@ -101,7 +95,10 @@ def draw():
                 (i.pos[0], j.pos[1]),
                 5,
             )
-            trace.append((i.pos[0], j.pos[1]))
+            if len(trace) < 22500:
+                trace.append((i.pos[0], j.pos[1]))
+            else:
+                trace = []
 
     pygame.display.update()
 
