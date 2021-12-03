@@ -17,6 +17,7 @@ ORANGE = (255, 140, 0)
 # GLOBALS
 R = 30
 D = R * 2
+S = 0.01
 COLS = WIDTH // D
 print(COLS)
 
@@ -57,11 +58,11 @@ class Point:
 
 # OBJECTS
 cols = [
-    Point(root, ORANGE, WHITE, (j * D * 1.25, D), R, -90, (i + 1) * 0.025)
+    Point(root, ORANGE, WHITE, (j * D * 1.25, D), R, -90, (i + 1) * S)
     for i, j in enumerate(range(2, 8))
 ]
 rows = [
-    Point(root, ORANGE, WHITE, (D, j * D * 1.25), R, -90, (i + 1) * 0.025)
+    Point(root, ORANGE, WHITE, (D, j * D * 1.25), R, -90, (i + 1) * S)
     for i, j in enumerate(range(2, 8))
 ]
 trace = []
@@ -87,7 +88,9 @@ def draw():
             1,
         )
 
-    if len(trace) >= 20000:
+    print(len(trace))
+
+    if len(trace) >= 22000:
         trace = []
 
     for i in cols:
