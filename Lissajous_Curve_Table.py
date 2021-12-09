@@ -112,9 +112,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
         draw()
 
 
 if __name__ == "__main__":
     main()
+    pygame.quit()
